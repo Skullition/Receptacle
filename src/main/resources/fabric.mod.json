@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "receptacle",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Skullition's Receptacle",
+  "description": "A fabric mod that adds things.",
   "authors": [
-    "Me!"
+    "Skullition"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/Skullition/Receptacle",
+    "issues": "https://github.com/Skullition/Receptacle/issues"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "GNU GPLv3",
+  "icon": "assets/receptacle/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "skullition.receptacle.Receptacle"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "receptacle.mixins.json"
   ],
 
   "depends": {
@@ -31,8 +31,5 @@
     "fabric": "*",
     "minecraft": "1.17.x",
     "java": ">=16"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
