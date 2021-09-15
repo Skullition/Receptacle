@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "receptacle",
-  "version": "${version}",
+  "version": "1.0.0",
 
   "name": "Skullition's Receptacle",
   "description": "A fabric mod that adds things.",
