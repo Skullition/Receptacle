@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "receptacle:mono_dirt"
+    "receptacle:mono_dirt",
+    "receptacle:mono_grass_block"
   ]
 }

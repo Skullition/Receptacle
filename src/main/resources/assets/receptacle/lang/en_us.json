@@ -1,4 +1,5 @@
 {
   "itemGroup.receptacle.receptacle_item_group": "Receptacle",
-  "block.receptacle.mono_dirt": "Mono Dirt"
+  "block.receptacle.mono_dirt": "Mono Dirt",
+  "block.receptacle.mono_grass_block": "Mono Grass Block"
 }
