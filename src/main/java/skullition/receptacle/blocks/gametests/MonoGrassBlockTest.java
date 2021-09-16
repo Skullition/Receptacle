@@ -20,6 +20,7 @@ public class MonoGrassBlockTest implements FabricGameTest {
         test.expectBlockAtEnd(Setup.MONO_GRASS_BLOCK, pos2);
     }
 
+    @SuppressWarnings("unused")
     @GameTest(structureName = EMPTY_STRUCTURE)
     public void grassIsRemoved(TestContext test) {
 

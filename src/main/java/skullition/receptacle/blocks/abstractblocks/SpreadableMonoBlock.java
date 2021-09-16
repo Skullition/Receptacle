@@ -14,7 +14,7 @@ import skullition.receptacle.Setup;
 
 import java.util.Random;
 
-public class SpreadableMonoBlock extends SnowyBlock {
+public abstract class SpreadableMonoBlock extends SnowyBlock {
     protected SpreadableMonoBlock(Settings settings) {
         super(settings);
     }
