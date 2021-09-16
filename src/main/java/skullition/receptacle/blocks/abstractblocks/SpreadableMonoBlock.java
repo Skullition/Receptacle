@@ -54,9 +54,4 @@ public class SpreadableMonoBlock extends SnowyBlock {
 
         }
     }
-
-    @Override
-    public boolean hasRandomTicks(BlockState state) {
-        return true;
-    }
 }

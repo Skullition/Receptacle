@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "skullition.receptacle.Receptacle"
+    ],
+    "fabric-gametest": [
+      "skullition.receptacle.blocks.gametests.MonoGrassBlockTest"
     ]
   },
   "mixins": [
