@@ -17,7 +17,7 @@ public class Setup {
     public static final Block MONO_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block MONO_COBBLESTONE = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2.0F, 6.0F));
     public static final MonoGrassBlock MONO_GRASS_BLOCK = new MonoGrassBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRASS).ticksRandomly());
-    public static final FrozenMagmaBlock FROZEN_MAGMA_BLOCK = new FrozenMagmaBlock(AbstractBlock.Settings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(0.5F));
+    public static final FrozenMagmaBlock FROZEN_MAGMA_BLOCK = new FrozenMagmaBlock(AbstractBlock.Settings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(50.0F, 1200.0F));
     public static final SoundEvent MONO_AMBIENT = new SoundEvent(new Identifier(Receptacle.MODID, "monobiome"));
 
     public static void registerAll() {

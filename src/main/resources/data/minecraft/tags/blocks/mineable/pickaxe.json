@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "receptacle:mono_cobblestone"
+    "receptacle:mono_cobblestone",
+    "receptacle:frozen_magma_block"
   ]
 }
