@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
@@ -12,6 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import skullition.receptacle.blocks.FrozenMagmaBlock;
 import skullition.receptacle.blocks.MonoGrassBlock;
+import skullition.receptacle.items.MagmaWalkerEnchantment;
 
 public class Setup {
     // items
@@ -23,6 +26,8 @@ public class Setup {
     // block entities
     // sounds
     public static final SoundEvent MONO_AMBIENT = new SoundEvent(new Identifier(Receptacle.MODID, "monobiome"));
+    // enchantments
+    public static final MagmaWalkerEnchantment MAGMA_WALKER_ENCHANTMENT = new MagmaWalkerEnchantment(Enchantment.Rarity.UNCOMMON, new EquipmentSlot[]{EquipmentSlot.FEET});
 
     public static void registerAll() {
         // items
@@ -39,5 +44,8 @@ public class Setup {
         // block entities
         // sounds
         Registry.register(Registry.SOUND_EVENT, new Identifier(Receptacle.MODID, "monobiome"), MONO_AMBIENT);
+        // enchantments
+        Registry.register(Registry.ENCHANTMENT, new Identifier(Receptacle.MODID, "magma_walker_enchantment"), MAGMA_WALKER_ENCHANTMENT);
+
     }
 }
