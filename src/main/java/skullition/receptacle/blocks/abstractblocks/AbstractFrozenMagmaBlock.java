@@ -10,14 +10,9 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import skullition.receptacle.Receptacle;
-
-import java.util.Random;
 
 public abstract class AbstractFrozenMagmaBlock extends TransparentBlock {
 
@@ -42,6 +37,7 @@ public abstract class AbstractFrozenMagmaBlock extends TransparentBlock {
         world.updateNeighbor(pos, Blocks.LAVA, pos);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public PistonBehavior getPistonBehavior(BlockState state) {
         return PistonBehavior.NORMAL;
