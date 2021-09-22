@@ -22,7 +22,7 @@
       "skullition.receptacle.Receptacle"
     ],
     "fabric-gametest": [
-      "skullition.receptacle.blocks.gametests.MonoGrassBlockTest"
+      "skullition.receptacle.gametests.MonoGrassBlockTest",
     ]
   },
   "mixins": [

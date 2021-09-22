@@ -1,4 +1,4 @@
-package skullition.receptacle.blocks.gametests;
+package skullition.receptacle.gametests;
 
 import net.fabricmc.fabric.api.gametest.v1.FabricGameTest;
 import net.minecraft.test.GameTest;
