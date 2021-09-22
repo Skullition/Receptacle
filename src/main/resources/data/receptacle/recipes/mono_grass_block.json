@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WRW",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:grass_block"
+    },
+    "R": {
+      "item": "minecraft:gray_dye"
+    }
+  },
+  "result": {
+    "item": "receptacle:mono_grass_block",
+    "count": 8
+  }
+}
