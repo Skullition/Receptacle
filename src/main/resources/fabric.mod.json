@@ -14,7 +14,7 @@
   },
 
   "license": "GNU GPLv3",
-  "icon": "assets/receptacle/icon.png",
+  "icon": "assets/receptacle/profoundlogo.png",
 
   "environment": "*",
   "entrypoints": {
