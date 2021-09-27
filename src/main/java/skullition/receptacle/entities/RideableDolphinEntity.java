@@ -18,6 +18,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -108,6 +110,54 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.saddledComponent.readNbt(nbt);
+    }
+
+    @Override
+    public void travel(Vec3d movementInput) {
+        if (this.isAlive()) {
+            Entity entity2 = this.getFirstPassenger();
+            if (this.hasPassengers() && this.canBeControlledByRider() && entity2 instanceof PlayerEntity) {
+                this.setYaw(entity2.getYaw());
+                this.prevYaw = this.getYaw();
+                this.setPitch(entity2.getPitch() * 0.5F);
+                this.setRotation(this.getYaw(), this.getPitch());
+                this.bodyYaw = this.getYaw();
+                this.headYaw = this.getYaw();
+                this.stepHeight = 1.0F;
+                this.flyingSpeed = this.getMovementSpeed() * 0.1F;
+                if (this.saddledComponent.boosted && this.saddledComponent.boostedTime++ > this.saddledComponent.currentBoostTime) {
+                    this.saddledComponent.boosted = false;
+                }
+
+                if (this.isLogicalSideForUpdatingMovement()) {
+                    float f = this.getSaddledSpeed();
+                    if (this.saddledComponent.boosted) {
+                        f += f * 1.15F * MathHelper.sin((float) this.saddledComponent.boostedTime / (float) this.saddledComponent.currentBoostTime * 3.1415927F);
+                    }
+
+                    this.setMovementSpeed(f);
+                    this.setMovementInput(new Vec3d(0.0D, 0.0D, 1.0D));
+                    this.bodyTrackingIncrements = 0;
+                } else {
+                    this.updateLimbs(this, false);
+                    this.setVelocity(Vec3d.ZERO);
+                }
+
+                this.tryCheckBlockCollision();
+            } else {
+                this.stepHeight = 0.5F;
+                this.flyingSpeed = 0.02F;
+                this.setMovementInput(movementInput);
+            }
+        }
+    }
+
+    public void setMovementInput(Vec3d movementInput) {
+        super.travel(movementInput);
+    }
+
+    public float getSaddledSpeed() {
+        return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.225F;
     }
 }
 
