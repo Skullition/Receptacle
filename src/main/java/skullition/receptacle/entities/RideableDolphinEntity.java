@@ -1,9 +1,6 @@
 package skullition.receptacle.entities;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Saddleable;
-import net.minecraft.entity.SaddledComponent;
+import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
@@ -132,7 +129,7 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
                 if (this.isLogicalSideForUpdatingMovement()) {
                     float f = this.getSaddledSpeed();
                     if (this.saddledComponent.boosted) {
-                        f += f * 1.15F * MathHelper.sin((float) this.saddledComponent.boostedTime / (float) this.saddledComponent.currentBoostTime * 3.1415927F);
+                        f += f * 1.15F * MathHelper.sin((float)this.saddledComponent.boostedTime / (float)this.saddledComponent.currentBoostTime * 3.1415927F);
                     }
 
                     this.setMovementSpeed(f);
@@ -158,6 +155,20 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
 
     public float getSaddledSpeed() {
         return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.225F;
+    }
+
+    @Override
+    public void onTrackedDataSet(TrackedData<?> data) {
+        if (BOOST_TIME.equals(data) && this.world.isClient) {
+            this.saddledComponent.boost();
+        }
+
+        super.onTrackedDataSet(data);
+    }
+
+    @Override
+    public boolean canBeRiddenInWater() {
+        return true;
     }
 }
 
