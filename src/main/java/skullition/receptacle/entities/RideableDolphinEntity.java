@@ -11,14 +11,19 @@ import net.minecraft.entity.passive.DolphinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.MessageType;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import skullition.receptacle.Receptacle;
+
+import java.util.UUID;
 
 public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
     private static final TrackedData<Boolean> SADDLED;
@@ -111,7 +116,7 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
 
     @Override
     public void travel(Vec3d movementInput) {
-        if (this.isAlive()) {
+        if (this.isAlive() && this.isTouchingWater()) {
             Entity entity2 = this.getFirstPassenger();
             if (this.hasPassengers() && this.canBeControlledByRider() && entity2 instanceof PlayerEntity) {
                 this.setYaw(entity2.getYaw());
@@ -120,7 +125,6 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
                 this.setRotation(this.getYaw(), this.getPitch());
                 this.bodyYaw = this.getYaw();
                 this.headYaw = this.getYaw();
-                this.stepHeight = 1.0F;
                 this.flyingSpeed = this.getMovementSpeed() * 0.1F;
                 if (this.saddledComponent.boosted && this.saddledComponent.boostedTime++ > this.saddledComponent.currentBoostTime) {
                     this.saddledComponent.boosted = false;
@@ -129,11 +133,14 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
                 if (this.isLogicalSideForUpdatingMovement()) {
                     float f = this.getSaddledSpeed();
                     if (this.saddledComponent.boosted) {
-                        f += f * 1.15F * MathHelper.sin((float)this.saddledComponent.boostedTime / (float)this.saddledComponent.currentBoostTime * 3.1415927F);
+                        f += f * MathHelper.sin((float)this.saddledComponent.boostedTime / (float)this.saddledComponent.currentBoostTime * 3.1415927F / 2);
                     }
 
-                    this.setMovementSpeed(f);
-                    this.setMovementInput(new Vec3d(0.0D, 0.0D, 1.0D));
+                     this.setMovementSpeed(f);
+                     this.setMovementInput(new Vec3d(0.0D, 1.0D, 1.0D));
+                    this.updateVelocity(this.getMovementSpeed(), movementInput);
+                    this.move(MovementType.SELF, this.getVelocity());
+                    this.setVelocity(this.getVelocity().multiply(0.9D));
                     this.bodyTrackingIncrements = 0;
                 } else {
                     this.updateLimbs(this, false);
@@ -142,10 +149,11 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
 
                 this.tryCheckBlockCollision();
             } else {
-                this.stepHeight = 0.5F;
                 this.flyingSpeed = 0.02F;
                 this.setMovementInput(movementInput);
             }
+        } else {
+            super.travel(movementInput);
         }
     }
 
@@ -154,7 +162,7 @@ public class RideableDolphinEntity extends DolphinEntity implements Saddleable {
     }
 
     public float getSaddledSpeed() {
-        return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.225F;
+        return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 1.225F;
     }
 
     @Override
