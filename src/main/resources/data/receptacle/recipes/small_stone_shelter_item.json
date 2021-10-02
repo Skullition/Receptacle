@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    "W W",
+    "WRW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:stone"
+    },
+    "R": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "receptacle:small_stone_shelter_item",
+    "count": 1
+  }
+}
