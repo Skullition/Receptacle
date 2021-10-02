@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "receptacle:item/small_glass_shelter_item"
+  }
+}

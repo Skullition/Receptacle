@@ -6,6 +6,6 @@
   "block.receptacle.frozen_magma_block": "Frozen Magma Block",
   "subtitles.receptacle.monobiome": "Ominous music",
   "enchantment.receptacle.magma_walker_enchantment" : "Magma Walker",
-  "item.receptacle.portable_shelter_item" : "Portable Glass Shelter",
-  "portable_shelter_item.tooltip": "Use to create a small glass shelter."
+  "item.receptacle.small_glass_shelter_item" : "Small Portable Glass Shelter",
+  "portable_shelter_item.tooltip": "Use to create a portable shelter."
 }
