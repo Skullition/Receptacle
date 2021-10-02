@@ -10,8 +10,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import skullition.receptacle.items.abstractitems.AbstractPortableShelterItem;
 
-public class SmallGlassShelterItem extends AbstractPortableShelterItem {
-    public SmallGlassShelterItem(Settings settings) {
+public class SmallStoneShelterItem extends AbstractPortableShelterItem {
+    public SmallStoneShelterItem(Settings settings) {
         super(settings);
     }
 

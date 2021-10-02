@@ -7,5 +7,6 @@
   "subtitles.receptacle.monobiome": "Ominous music",
   "enchantment.receptacle.magma_walker_enchantment" : "Magma Walker",
   "item.receptacle.small_glass_shelter_item" : "Small Portable Glass Shelter",
+  "item.receptacle.small_stone_shelter_item" : "Small Portable Stone Shelter",
   "portable_shelter_item.tooltip": "Use to create a portable shelter."
 }
