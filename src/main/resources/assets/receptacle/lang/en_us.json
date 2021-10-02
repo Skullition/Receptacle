@@ -5,5 +5,6 @@
   "block.receptacle.mono_cobblestone": "Mono Cobblestone",
   "block.receptacle.frozen_magma_block": "Frozen Magma Block",
   "subtitles.receptacle.monobiome": "Ominous music",
-  "enchantment.receptacle.magma_walker_enchantment" : "Magma Walker"
+  "enchantment.receptacle.magma_walker_enchantment" : "Magma Walker",
+  "item.receptacle.portable_shelter_item" : "Portable Glass Shelter"
 }
