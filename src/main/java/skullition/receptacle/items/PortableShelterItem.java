@@ -31,17 +31,17 @@ public class PortableShelterItem extends Item {
         // loops are overrated
         this.placeBlock(world, pos.up(2), glass);
 
-        this.placeBlock(world,pos.west(), glass);
-        this.placeBlock(world, pos.west().add(0, 1, 0),glass);
+        this.placeBlock(world, pos.west(), glass);
+        this.placeBlock(world, pos.west().add(0, 1, 0), glass);
 
-        this.placeBlock(world,pos.east(), glass);
-        this.placeBlock(world, pos.east().add(0, 1, 0),glass);
+        this.placeBlock(world, pos.east(), glass);
+        this.placeBlock(world, pos.east().add(0, 1, 0), glass);
 
-        this.placeBlock(world,pos.north(), glass);
-        this.placeBlock(world, pos.north().add(0, 1, 0),glass);
+        this.placeBlock(world, pos.north(), glass);
+        this.placeBlock(world, pos.north().add(0, 1, 0), glass);
 
-        this.placeBlock(world,pos.south(), glass);
-        this.placeBlock(world, pos.south().add(0, 1, 0),glass);
+        this.placeBlock(world, pos.south(), glass);
+        this.placeBlock(world, pos.south().add(0, 1, 0), glass);
 
         this.placeBlock(world, pos, Blocks.TORCH.getDefaultState());
         ItemStack itemStack = user.getStackInHand(hand);
