@@ -19,8 +19,8 @@ public class SmallStoneShelterItem extends AbstractPortableShelterItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (world.isClient()) return TypedActionResult.success(user.getStackInHand(hand));
         BlockPos pos = user.getBlockPos();
-        final BlockState glass = Blocks.GLASS.getDefaultState();
-        super.createSmallShelter(world, pos, glass, user, hand);
+        final BlockState stone = Blocks.STONE.getDefaultState();
+        super.createSmallShelter(world, pos, stone, user, hand);
 
         return TypedActionResult.success(user.getStackInHand(hand));
     }
