@@ -43,7 +43,9 @@ public class PortableShelterItem extends Item {
         this.placeBlock(world, pos.south(), glass);
         this.placeBlock(world, pos.south().add(0, 1, 0), glass);
 
-        this.placeBlock(world, pos, Blocks.TORCH.getDefaultState());
+        if (!world.getBlockState(pos.down()).isAir()) {
+            this.placeBlock(world, pos, Blocks.TORCH.getDefaultState());
+        }
         ItemStack itemStack = user.getStackInHand(hand);
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode) {
