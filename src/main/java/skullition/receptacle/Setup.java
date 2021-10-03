@@ -20,6 +20,7 @@ import net.minecraft.util.registry.Registry;
 import skullition.receptacle.blocks.FrozenMagmaBlock;
 import skullition.receptacle.blocks.MonoGrassBlock;
 import skullition.receptacle.entities.RideableDolphinEntity;
+import skullition.receptacle.items.LargeGlassShelterItem;
 import skullition.receptacle.items.MagmaWalkerEnchantment;
 import skullition.receptacle.items.SmallGlassShelterItem;
 import skullition.receptacle.items.SmallStoneShelterItem;
@@ -28,6 +29,7 @@ public class Setup {
     // items
     public static final SmallGlassShelterItem SMALL_GLASS_SHELTER_ITEM = new SmallGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
     public static final SmallStoneShelterItem SMALL_STONE_SHELTER_ITEM = new SmallStoneShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
+    public static final LargeGlassShelterItem LARGE_GLASS_SHELTER_ITEM = new LargeGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
     // blocks
     public static final Block MONO_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block MONO_COBBLESTONE = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2.0F, 6.0F));
@@ -45,6 +47,7 @@ public class Setup {
         // items
         Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "small_glass_shelter_item"), SMALL_GLASS_SHELTER_ITEM);
         Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "small_stone_shelter_item"), SMALL_STONE_SHELTER_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "large_glass_shelter_item"), LARGE_GLASS_SHELTER_ITEM);
         // blocks
         Registry.register(Registry.BLOCK, new Identifier(Receptacle.MODID, "mono_grass_block"), MONO_GRASS_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Receptacle.MODID, "mono_dirt"), MONO_DIRT);

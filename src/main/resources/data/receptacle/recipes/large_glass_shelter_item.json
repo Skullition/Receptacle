@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WWW",
+    "WRW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:glass"
+    },
+    "R": {
+      "item": "receptacle:small_glass_shelter_item"
+    }
+  },
+  "result": {
+    "item": "receptacle:large_glass_shelter_item",
+    "count": 1
+  }
+}

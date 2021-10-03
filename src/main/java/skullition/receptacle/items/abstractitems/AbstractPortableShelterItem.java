@@ -11,6 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -55,6 +56,30 @@ public class AbstractPortableShelterItem extends Item {
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode) {
             itemStack.decrement(1);
+        }
+    }
+
+    protected void createLargeShelter(World world, BlockPos pos, BlockState state, PlayerEntity user, Hand hand) {
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        BlockPos west = pos.west(2);
+        BlockPos west2 = west.south();
+
+        mutable.set(west2);
+        for (int x = 0; x < 3; ++x) {
+            for (int y = 0; y < 3; ++y) {
+                this.placeBlock(world, mutable.add(0, y, -x), state);
+                world.addBlockBreakParticles(mutable, state);
+            }
+        }
+
+        BlockPos south = pos.south(2);
+        BlockPos south2 = south.east();
+
+        mutable.set(south2);
+        for (int x = 0; x < 3; ++x) {
+            for (int y = 0; y < 3; ++y) {
+                this.placeBlock(world, mutable.add(-x, y, 0), state);
+            }
         }
     }
 }
