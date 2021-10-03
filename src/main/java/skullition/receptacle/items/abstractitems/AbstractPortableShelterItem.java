@@ -11,7 +11,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -80,6 +79,49 @@ public class AbstractPortableShelterItem extends Item {
             for (int y = 0; y < 3; ++y) {
                 this.placeBlock(world, mutable.add(-x, y, 0), state);
             }
+        }
+
+
+        BlockPos east = pos.east(2);
+        BlockPos east2 = east.south();
+
+        mutable.set(east2);
+        for (int x = 0; x < 3; ++x) {
+            for (int y = 0; y < 3; ++y) {
+                this.placeBlock(world, mutable.add(0, y, -x), state);
+                world.addBlockBreakParticles(mutable, state);
+            }
+        }
+
+        BlockPos north = pos.north(2);
+        BlockPos north2 = north.east();
+
+        mutable.set(north2);
+        for (int x = 0; x < 3; ++x) {
+            for (int y = 0; y < 3; ++y) {
+                this.placeBlock(world, mutable.add(-x, y, 0), state);
+            }
+        }
+
+
+        BlockPos roof = pos.up(3);
+        BlockPos roof2 = roof.east();
+        BlockPos roof3 = roof2.north();
+
+        mutable.set(roof3);
+        for (int x = 0; x < 3; ++x) {
+            for (int z = 0; z < 3; ++z) {
+                this.placeBlock(world, mutable.add(-x, 0, z), state);
+            }
+        }
+
+        if (!world.getBlockState(pos.down()).isAir()) {
+            this.placeBlock(world, pos, Blocks.TORCH.getDefaultState());
+        }
+        ItemStack itemStack = user.getStackInHand(hand);
+        user.incrementStat(Stats.USED.getOrCreateStat(this));
+        if (!user.getAbilities().creativeMode) {
+            itemStack.decrement(1);
         }
     }
 }
