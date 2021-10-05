@@ -5,6 +5,8 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
@@ -30,6 +32,7 @@ public class FloatingBlockItem extends BlockItem {
         if (world.getBlockState(posDownFront).isAir()) {
             world.setBlockState(posDownFront, this.getBlock().getDefaultState());
             stack.setCount(stack.getCount() - 1);
+            world.playSound(null, posDownFront, SoundEvents.BLOCK_GLASS_PLACE, SoundCategory.PLAYERS, 1f, 1f);
         }
         return TypedActionResult.success(stack);
     }
