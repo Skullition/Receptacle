@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "receptacle:block/floating_block"
+    }
+  }
+}

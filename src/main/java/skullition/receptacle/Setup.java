@@ -32,7 +32,7 @@ public class Setup {
     public static final Block MONO_COBBLESTONE = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2.0F, 6.0F));
     public static final MonoGrassBlock MONO_GRASS_BLOCK = new MonoGrassBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final FrozenMagmaBlock FROZEN_MAGMA_BLOCK = new FrozenMagmaBlock(FabricBlockSettings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(50.0F, 1200.0F));
-    public static final FloatingBlock FLOATING_BLOCK = new FloatingBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly());
+    public static final FloatingBlock FLOATING_BLOCK = new FloatingBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque().sounds(BlockSoundGroup.GLASS).blockVision((state, view, pos) -> false).solidBlock((state, view, pos) -> false).allowsSpawning((state, view, pos, type) -> false));
     // block entities
     // sounds
     public static final SoundEvent MONO_AMBIENT = new SoundEvent(new Identifier(Receptacle.MODID, "monobiome"));
