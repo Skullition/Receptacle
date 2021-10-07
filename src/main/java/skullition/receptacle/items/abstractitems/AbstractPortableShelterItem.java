@@ -34,6 +34,7 @@ public class AbstractPortableShelterItem extends Item {
     }
 
     protected void createSmallShelter(World world, BlockPos pos, BlockState state, PlayerEntity user, Hand hand) {
+        user.refreshPositionAndAngles(pos, user.headYaw, user.getPitch());
         this.placeBlock(world, pos.up(2), state);
 
         this.placeBlock(world, pos.west(), state);
@@ -56,9 +57,11 @@ public class AbstractPortableShelterItem extends Item {
         if (!user.getAbilities().creativeMode) {
             itemStack.decrement(1);
         }
+
     }
 
     protected void createLargeShelter(World world, BlockPos pos, BlockState state, PlayerEntity user, Hand hand) {
+        user.refreshPositionAndAngles(pos, user.headYaw, user.getPitch());
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         BlockPos west = pos.west(2);
         BlockPos west2 = west.south();
