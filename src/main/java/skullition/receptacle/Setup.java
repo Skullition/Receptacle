@@ -24,22 +24,36 @@ import skullition.receptacle.items.*;
 
 public class Setup {
     // items
-    public static final SmallGlassShelterItem SMALL_GLASS_SHELTER_ITEM = new SmallGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
-    public static final SmallStoneShelterItem SMALL_STONE_SHELTER_ITEM = new SmallStoneShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
-    public static final LargeGlassShelterItem LARGE_GLASS_SHELTER_ITEM = new LargeGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
+    public static final SmallGlassShelterItem SMALL_GLASS_SHELTER_ITEM;
+    public static final SmallStoneShelterItem SMALL_STONE_SHELTER_ITEM;
+    public static final LargeGlassShelterItem LARGE_GLASS_SHELTER_ITEM;
     // blocks
-    public static final Block MONO_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
-    public static final Block MONO_COBBLESTONE = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2.0F, 6.0F));
-    public static final MonoGrassBlock MONO_GRASS_BLOCK = new MonoGrassBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRASS).ticksRandomly());
-    public static final FrozenMagmaBlock FROZEN_MAGMA_BLOCK = new FrozenMagmaBlock(FabricBlockSettings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(50.0F, 1200.0F));
-    public static final FloatingBlock FLOATING_BLOCK = new FloatingBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque().sounds(BlockSoundGroup.GLASS).blockVision((state, view, pos) -> false).solidBlock((state, view, pos) -> false).allowsSpawning((state, view, pos, type) -> false));
+    public static final Block MONO_DIRT;
+    public static final Block MONO_COBBLESTONE;
+    public static final MonoGrassBlock MONO_GRASS_BLOCK;
+    public static final FrozenMagmaBlock FROZEN_MAGMA_BLOCK;
+    public static final FloatingBlock FLOATING_BLOCK;
     // block entities
     // sounds
-    public static final SoundEvent MONO_AMBIENT = new SoundEvent(new Identifier(Receptacle.MODID, "monobiome"));
+    public static final SoundEvent MONO_AMBIENT;
     // enchantments
-    public static final MagmaWalkerEnchantment MAGMA_WALKER_ENCHANTMENT = new MagmaWalkerEnchantment(Enchantment.Rarity.UNCOMMON, new EquipmentSlot[]{EquipmentSlot.FEET});
+    public static final MagmaWalkerEnchantment MAGMA_WALKER_ENCHANTMENT;
     // entities
-    public static final EntityType<RideableDolphinEntity> RIDEABLE_DOLPHIN_ENTITY = FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, RideableDolphinEntity::new).dimensions(EntityDimensions.fixed(0.9F, 0.6F)).build();
+    public static final EntityType<RideableDolphinEntity> RIDEABLE_DOLPHIN_ENTITY;
+
+    static {
+        LARGE_GLASS_SHELTER_ITEM = new LargeGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
+        SMALL_STONE_SHELTER_ITEM = new SmallStoneShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
+        SMALL_GLASS_SHELTER_ITEM = new SmallGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
+        MONO_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
+        FLOATING_BLOCK = new FloatingBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque().sounds(BlockSoundGroup.GLASS).blockVision((state, view, pos) -> false).solidBlock((state, view, pos) -> false).allowsSpawning((state, view, pos, type) -> false));
+        MONO_GRASS_BLOCK = new MonoGrassBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5F).sounds(BlockSoundGroup.GRASS).ticksRandomly());
+        MONO_COBBLESTONE = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2.0F, 6.0F));
+        FROZEN_MAGMA_BLOCK = new FrozenMagmaBlock(FabricBlockSettings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(50.0F, 1200.0F));
+        MONO_AMBIENT = new SoundEvent(new Identifier(Receptacle.MODID, "monobiome"));
+        MAGMA_WALKER_ENCHANTMENT = new MagmaWalkerEnchantment(Enchantment.Rarity.UNCOMMON, new EquipmentSlot[]{EquipmentSlot.FEET});
+        RIDEABLE_DOLPHIN_ENTITY = FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, RideableDolphinEntity::new).dimensions(EntityDimensions.fixed(0.9F, 0.6F)).build();
+    }
 
     public static void registerAll() {
         // items
