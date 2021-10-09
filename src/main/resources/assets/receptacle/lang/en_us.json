@@ -10,6 +10,7 @@
   "item.receptacle.small_glass_shelter_item" : "Small Portable Glass Shelter",
   "item.receptacle.small_stone_shelter_item" : "Small Portable Stone Shelter",
   "item.receptacle.large_glass_shelter_item" : "Large Portable Glass Shelter",
+  "item.receptacle.water_balloon_item": "Water Balloon",
   "portable_shelter_item.tooltip": "Use to create a portable shelter.",
   "floating_block.tooltip" : "Right click on air to place this block in front of your feet!"
 }
