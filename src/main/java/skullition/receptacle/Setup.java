@@ -20,6 +20,7 @@ import skullition.receptacle.blocks.FloatingBlock;
 import skullition.receptacle.blocks.FrozenMagmaBlock;
 import skullition.receptacle.blocks.MonoGrassBlock;
 import skullition.receptacle.entities.RideableDolphinEntity;
+import skullition.receptacle.entities.WaterBalloonEntity;
 import skullition.receptacle.items.*;
 
 public class Setup {
@@ -27,6 +28,7 @@ public class Setup {
     public static final SmallGlassShelterItem SMALL_GLASS_SHELTER_ITEM;
     public static final SmallStoneShelterItem SMALL_STONE_SHELTER_ITEM;
     public static final LargeGlassShelterItem LARGE_GLASS_SHELTER_ITEM;
+    public static final WaterBalloonItem WATER_BALLOON_ITEM;
     // blocks
     public static final Block MONO_DIRT;
     public static final Block MONO_COBBLESTONE;
@@ -40,8 +42,12 @@ public class Setup {
     public static final MagmaWalkerEnchantment MAGMA_WALKER_ENCHANTMENT;
     // entities
     public static final EntityType<RideableDolphinEntity> RIDEABLE_DOLPHIN_ENTITY;
+    // entity types
+    public static final EntityType<WaterBalloonEntity> WATER_BALLOON_ENTITY_ENTITY_TYPE;
 
     static {
+        WATER_BALLOON_ENTITY_ENTITY_TYPE = FabricEntityTypeBuilder.<WaterBalloonEntity>create(SpawnGroup.MISC, WaterBalloonEntity::new).dimensions(EntityDimensions.fixed(0.98F, 0.7F)).trackRangeBlocks(8).build();
+        WATER_BALLOON_ITEM = new WaterBalloonItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(1));
         LARGE_GLASS_SHELTER_ITEM = new LargeGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
         SMALL_STONE_SHELTER_ITEM = new SmallStoneShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
         SMALL_GLASS_SHELTER_ITEM = new SmallGlassShelterItem(new FabricItemSettings().group(Receptacle.RECEPTACLE_ITEM_GROUP).maxCount(16));
@@ -60,6 +66,7 @@ public class Setup {
         Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "small_glass_shelter_item"), SMALL_GLASS_SHELTER_ITEM);
         Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "small_stone_shelter_item"), SMALL_STONE_SHELTER_ITEM);
         Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "large_glass_shelter_item"), LARGE_GLASS_SHELTER_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(Receptacle.MODID, "water_balloon_item"), WATER_BALLOON_ITEM);
         // blocks
         Registry.register(Registry.BLOCK, new Identifier(Receptacle.MODID, "mono_grass_block"), MONO_GRASS_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Receptacle.MODID, "mono_dirt"), MONO_DIRT);
@@ -81,6 +88,8 @@ public class Setup {
         Registry.register(Registry.ENTITY_TYPE, new Identifier(Receptacle.MODID, "rideable_dolphin_entity"), RIDEABLE_DOLPHIN_ENTITY);
         // entity attributes
         FabricDefaultAttributeRegistry.register(RIDEABLE_DOLPHIN_ENTITY, RideableDolphinEntity.createRideableDolphinAttributes());
+        // entity type
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(Receptacle.MODID, "water_balloon_item"), WATER_BALLOON_ENTITY_ENTITY_TYPE);
 
     }
 }
