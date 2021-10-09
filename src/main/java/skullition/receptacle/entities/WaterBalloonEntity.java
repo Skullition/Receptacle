@@ -38,8 +38,7 @@ public class WaterBalloonEntity extends ThrownItemEntity {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
         BlockPos pos = entity.getBlockPos();
-        World world = entity.getEntityWorld();
-        world.setBlockState(pos, Blocks.WATER.getDefaultState());
+        this.world.setBlockState(pos, Blocks.WATER.getDefaultState());
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), (float) 0);
     }
 
@@ -48,7 +47,7 @@ public class WaterBalloonEntity extends ThrownItemEntity {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
             this.discard();
+            this.world.setBlockState(new BlockPos(hitResult.getPos()), Blocks.WATER.getDefaultState());
         }
     }
-
 }
