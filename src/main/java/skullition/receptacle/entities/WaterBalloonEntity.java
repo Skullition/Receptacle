@@ -1,6 +1,5 @@
 package skullition.receptacle.entities;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -8,7 +7,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
@@ -45,9 +43,14 @@ public class WaterBalloonEntity extends ThrownItemEntity {
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
+        BlockPos pos = new BlockPos(hitResult.getPos());
         if (!this.world.isClient) {
             this.discard();
-            this.world.setBlockState(new BlockPos(hitResult.getPos()), Blocks.WATER.getDefaultState());
+            if (this.world.isAir(pos)) {
+                this.world.setBlockState(pos, Blocks.WATER.getDefaultState());
+            } else if (this.world.isAir(pos.up())) {
+                this.world.setBlockState(pos.up(), Blocks.WATER.getDefaultState());
+            }
         }
     }
 }
