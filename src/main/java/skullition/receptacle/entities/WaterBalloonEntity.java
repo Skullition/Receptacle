@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.hit.EntityHitResult;
@@ -14,12 +15,15 @@ import net.minecraft.world.World;
 import skullition.receptacle.Setup;
 
 public class WaterBalloonEntity extends ThrownItemEntity {
+    PlayerEntity player;
+
     public WaterBalloonEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
     public WaterBalloonEntity(World world, LivingEntity owner) {
         super(Setup.WATER_BALLOON_ENTITY_ENTITY_TYPE, owner, world);
+        this.player = (PlayerEntity) owner;
     }
 
     public WaterBalloonEntity(World world, double x, double y, double z) {
@@ -50,6 +54,8 @@ public class WaterBalloonEntity extends ThrownItemEntity {
                 this.world.setBlockState(pos, Blocks.WATER.getDefaultState());
             } else if (this.world.isAir(pos.up())) {
                 this.world.setBlockState(pos.up(), Blocks.WATER.getDefaultState());
+            } else if (this.player != null && this.world.isAir(pos.offset(player.getHorizontalFacing().getOpposite()))) {
+                this.world.setBlockState(pos.offset(player.getHorizontalFacing().getOpposite()), Blocks.WATER.getDefaultState());
             }
         }
     }
